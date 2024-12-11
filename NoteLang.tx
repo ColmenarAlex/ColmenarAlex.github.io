@@ -1,0 +1,60 @@
+Program:
+    'score' '{' commands*=Command '}';
+
+Command:
+    NoteLine | AssignmentCommand | WhileCommand | ModifyCommand |
+    BlockDefinition | PlayBlockCommand;
+
+NoteLine:
+    ':' notes+=NoteOrRest+;
+
+NoteOrRest:
+    Note | Rest;
+
+Rest:
+    duration=Duration 'R';
+
+Note:
+    duration=Duration noteName=NoteName octaveExpr=OctaveExpression accidental=Accidental?;
+
+NoteName:
+    'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G';
+
+OctaveExpression:
+    value=INT | variable=ID;
+
+Duration:
+    '1' | '2' | '4' | '8';
+
+Accidental:
+    '#' | 'b';
+
+BlockDefinition:
+    'block' name=ID '{' commands+=NoteLine+ '}';
+
+PlayBlockCommand:
+    'play' blockName=ID;
+
+AssignmentCommand:
+    variable=ID '=' value=INT;
+
+WhileCommand:
+    'while' condition=Condition '{' body=CommandList '}';
+
+Condition:
+    left=ID comparator=Comparator right=INT;
+
+Comparator:
+    '==' | '!=' | '<' | '<=' | '>' | '>=';
+
+ModifyCommand:
+    variable=ID operator=Operator value=INT;
+
+Operator:
+    '+=' | '-=' | '*=' | '/=';
+
+CommandList:
+    commands+=Command*;
+
+INT: /\d+/;
+ID: /[a-zA-Z_][a-zA-Z0-9_]*/;

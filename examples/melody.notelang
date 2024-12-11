@@ -1,0 +1,40 @@
+score {
+    tempo = 120
+
+    : 8C4 8D4 8E4
+    : 8C5 8D5 8E5
+    : 8C6 8D6 8E6
+    : 2R
+
+    block mixed_chord {
+        : 8C4 8E4 8G4#
+        : 8C5 8E5 8G5#
+        : 4R
+    }
+
+    play mixed_chord
+
+    : 8B4b 8A4 8G4
+    : 8B5b 8A5 8G5
+    : 2R
+
+    octave = 3
+    count = 0
+    while count < 3 {
+        : 4Coctave 4Eoctave 4Goctave
+        octave += 1
+        count += 1
+    }
+
+    : 8C4 8Coctave 8C5
+    : 4R
+
+    block var_block {
+        : 4Coctave
+        : 2R
+        : 4Eoctave
+    }
+
+    octave = 5
+    play var_block
+}

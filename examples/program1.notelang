@@ -1,0 +1,34 @@
+score {
+    tempo = 120
+
+    octave = 3
+
+    while octave < 6 {
+
+        : 4Coctave
+        : 4Doctave
+        : 4Eoctave
+        : 4Foctave
+        : 4Goctave
+        : 4Aoctave
+        : 4Boctave
+        : 4Coctave
+        
+        : 4R
+
+        octave += 1
+
+        : 4Coctave
+        : 4Boctave
+        : 4Aoctave
+        : 4Goctave
+        : 4Foctave
+        : 4Eoctave
+        : 4Doctave
+        : 4Coctave
+
+        : 2R
+        
+        octave += 1
+    }
+}
