@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoteLang - A Musical Programming Language</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 1em;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold mb-4">NoteLang</h1>
+            <p class="text-xl text-gray-600">A Programming Language for Music Creation</p>
+        </header>
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-4">Introduction</h2>
+            <p class="mb-4">
+                NoteLang is a domain-specific programming language designed for creating music through code. 
+                It combines traditional programming constructs with musical notation, allowing you to write 
+                programs that generate MIDI music files.
+            </p>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-4">Installation</h2>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+                <p class="mb-4">1. Clone the repository:</p>
+                <pre class="mb-4">git clone https://github.com/ColmenarAlex/NoteLang.git</pre>
+                
+                <p class="mb-4">2. Install dependencies:</p>
+                <pre class="mb-4">pip install textx midiutil</pre>
+                
+                <p class="mb-4">3. Run your first NoteLang program:</p>
+                <pre>python NoteLang.py examples/melody.notelang</pre>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-4">Example Programs</h2>
+            
+            <h3 class="text-xl font-bold mb-2">Simple Scale</h3>
+            <pre class="mb-6">score {
+    tempo = 120
+    
+    : 4C4 
+    : 4D4 
+    : 4E4 
+    : 4F4
+    : 4G4 
+    : 4A4
+    : 4B4 
+    : 4C5
+}</pre>
+            
+            <h3 class="text-xl font-bold mb-2">Arpeggio with Block</h3>
+            <pre class="mb-6">score {
+    tempo = 120
+    
+    block arpeggio {
+        : 8C4
+        : 8E4
+        : 8G4
+    }
+    
+    play arpeggio
+    : 4R
+    play arpeggio
+}</pre>
+
+            <h3 class="text-xl font-bold mb-2">Variable Octaves</h3>
+            <pre>score {
+    octave = 4
+    while octave < 6 {
+        : 4Coctave
+        : 4Eoctave
+        : 4Goctave
+        octave += 1
+    }
+}</pre>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-4">Language Specification</h2>
+            
+            <h3 class="text-xl font-bold mb-4">Basic Syntax</h3>
+            <div class="space-y-4">
+                <p><strong>Program Structure:</strong> Every program must start with <code>score {</code> and end with <code>}</code></p>
+                
+                <p><strong>Note Format:</strong> <code>[duration][note][octave][accidental?]</code></p>
+                <ul class="list-disc ml-6">
+                    <li>Duration: 1 (whole), 2 (half), 4 (quarter), 8 (eighth)</li>
+                    <li>Note: A through G</li>
+                    <li>Octave: number (4-6) or variable</li>
+                    <li>Accidental: # (sharp) or b (flat) - optional</li>
+                </ul>
+
+                <p><strong>Rest:</strong> <code>[duration]R</code></p>
+                
+                <p><strong>Variables:</strong></p>
+                <ul class="list-disc ml-6">
+                    <li>Assignment: <code>variable = value</code></li>
+                    <li>Modification: <code>variable += value</code></li>
+                </ul>
+
+                <p><strong>Blocks:</strong></p>
+                <pre>block name {
+    : notes...
+}
+play name</pre>
+
+                <p><strong>Control Flow:</strong></p>
+                <pre>while condition {
+    commands...
+}</pre>
+            </div>
+        </section>
+
+        <footer class="text-center text-gray-600 mt-16">
+            <p>NoteLang is open source. Visit the <a href="https://github.com/yourusername/NoteLang" class="text-blue-600 hover:underline">GitHub repository</a>.</p>
+        </footer>
+    </div>
+</body>
+</html>
